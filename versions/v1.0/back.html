@@ -1,0 +1,43 @@
+<div id="ans-container" class="ans-container">
+    <div id="char1" class="button-ans"></div>
+    <div id="char2" class="button-ans"></div>
+    <div id="char3" class="button-ans"></div>
+    <div id="char4" class="button-ans"></div>
+</div>
+
+<div id="audio" style="display:none;">{{Audio}}</div>
+<div id="btnPlayAudio" class="button-play">
+
+    <svg class="video-overlay-play-button" viewBox="0 0 200 200" alt="Play video">
+        <circle cx="100" cy="100" r="90" fill="none" stroke-width="15" stroke="#00aa82" />
+        <polygon points="70, 55 70, 145 145, 100" fill="#00aa82" />
+    </svg>
+
+</div>
+
+<br>
+
+<div id="chengyu" style="color: #27b46e;">{{chengyu_sim}}</div>
+<div id="chengyu_trad" style="color: #6495ed;">{{chengyu_trad}}</div>
+<div id="pinyin" style="color: #607d8b;">{{Pinyin}}</div>
+<div id="meaning" style="color: #ef6c00;">{{Meaning}}</div>
+
+<br>
+
+<a class="btn-hint" href="https://zh.wiktionary.org/zh-hant/{{chengyu_sim}}">wiki</a>
+<a class="btn-hint" href="http://www.zdic.net/hans/{{chengyu_sim}}">zdict</a>
+
+<script>
+    var chengyu = document.getElementById("chengyu").innerHTML;
+    document.getElementById("char1").innerHTML = "<div>" + chengyu[0] + "</div>";
+    document.getElementById("char2").innerHTML = "<div>" + chengyu[1] + "</div>";
+    document.getElementById("char3").innerHTML = "<div>" + chengyu[2] + "</div>";
+    document.getElementById("char4").innerHTML = "<div>" + chengyu[3] + "</div>";
+
+    document.getElementById("btnPlayAudio").onclick = function () {
+        var audioDiv = document.getElementById('audio');
+        var audio = audioDiv.getElementsByTagName("*");
+        audio[0].click();
+    };
+
+</script>

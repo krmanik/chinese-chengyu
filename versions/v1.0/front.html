@@ -1,0 +1,113 @@
+<div id="ans-container" class="ans-container"></div>
+
+<div id="chengyu" style="color: #27b46e; display:none;">{{chengyu_sim}}</div>
+<br>
+<div id="chengyu_trad" style="color: #6495ed; display:none;">{{chengyu_trad}}</div>
+<br>
+<div id="pinyin" class="pinyin">{{Pinyin}}</div>
+<br>
+<div id="meaning" class="meaning">{{Meaning}}</div>
+
+<br><br>
+
+<div class="grid-container">
+    <div id="char1" class="char1 button" onclick="btnClick(this.id);"></div>
+    <div id="char2" class="char2 button" onclick="btnClick(this.id);"></div>
+    <div id="char3" class="char3 button" onclick="btnClick(this.id);"></div>
+    <div id="char4" class="char4 button" onclick="btnClick(this.id);"></div>
+</div>
+
+<br><br>
+<div id="correct" class="correct">Correct</div>
+<br>
+<button class="btn-hint" onclick="hint();">HINT</button>
+
+<script>
+    /*
+    var randomColor = "#"+ Math.floor(Math.random()*16777215).toString(16);
+    document.getElementById("char1").style.backgroundColor = randomColor;
+    document.getElementById("char2").style.backgroundColor = randomColor;
+    document.getElementById("char3").style.backgroundColor = randomColor;
+    document.getElementById("char4").style.backgroundColor = randomColor;
+    */
+
+    var chengyu = document.getElementById("chengyu").innerHTML;
+
+    var tempChengyu = [];
+
+    tempChengyu.push(chengyu[0]);
+    tempChengyu.push(chengyu[1]);
+    tempChengyu.push(chengyu[2]);
+    tempChengyu.push(chengyu[3]);
+
+    shuffle(tempChengyu);
+
+    document.getElementById("char1").innerHTML = "<div>" + tempChengyu[0] + "</div>";
+    document.getElementById("char2").innerHTML = "<div>" + tempChengyu[1] + "</div>";
+    document.getElementById("char3").innerHTML = "<div>" + tempChengyu[2] + "</div>";
+    document.getElementById("char4").innerHTML = "<div>" + tempChengyu[3] + "</div>";
+
+    var newId = 1;
+    function btnClick(clicked) {
+        var dashElement = document.createElement("div");
+        var text = document.getElementById(clicked).innerText;
+        dashElement.style.display = "inline";
+        dashElement.innerHTML = "<div class='button-ans' onclick='dashClick(this.id);' id=" + clicked + newId + ">" + text + " </div>";
+        document.getElementById("ans-container").appendChild(dashElement);
+        document.getElementById(clicked).style.opacity = "0.2";
+        document.getElementById(clicked).style.pointerEvents = "none";
+
+        check(text);
+    }
+
+    function dashClick(clicked) {
+        var id = clicked.replace("1", "");
+        document.getElementById(id).style.opacity = "1";
+        document.getElementById(id).style.pointerEvents = "unset";
+        document.getElementById(clicked).remove();
+
+        var t = document.getElementById(id).innerText;
+        var i = a.indexOf(t);
+        a.splice(i, 1);
+    }
+
+    var a = [];
+    function check(text) {
+        a.push(text);
+        if (a.join("") == chengyu) {
+            console.log("dui");
+            document.getElementById("pinyin").style.display = "unset";
+            document.getElementById("meaning").style.display = "unset";
+            document.getElementById("correct").style.display = "unset";
+            document.getElementById("chengyu").style.display = "unset";
+            document.getElementById("chengyu_trad").style.display = "unset";
+        }
+    }
+
+    function shuffle(array) {
+        var currentIndex = array.length, temporaryValue, randomIndex;
+        while (0 !== currentIndex) {
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+        return array;
+    }
+
+    var hintCount = 0;
+    function hint() {
+
+        if (hintCount == 0) {
+            document.getElementById("meaning").style.display = "unset";
+        } else if (hintCount == 1) {
+            document.getElementById("pinyin").style.display = "unset";
+        } else {
+            document.getElementById("chengyu").style.display = "unset";
+            document.getElementById("chengyu_trad").style.display = "unset";
+        }
+
+        hintCount++;
+    } 
+</script>

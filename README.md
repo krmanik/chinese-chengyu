@@ -5,6 +5,10 @@ Excerpt from Wikipedia<br>
 
 <br>
 
+# QuickStart 
+Download chengyu Anki decks from AnkiWeb
+[chengyu Anki decks](https://ankiweb.net/shared/info/1956974465)
+
 # Features in the Anki deck
 - Gamification, select chengyu characters in order 
 - Simplified, Traditional, Pinyin and Audio
@@ -33,10 +37,6 @@ Excerpt from Wikipedia<br>
 
 6. Copy card.css to styling of deck template 
 <br>View [card.css](versions/v1.0/card.css)
-
-
-## Or Download generated Anki deck from [Patreon](https://www.patreon.com/posts/46478945)
-
 
 # Demo
 ![](images/demo.gif)

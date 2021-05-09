@@ -7,7 +7,7 @@ Excerpt from Wikipedia<br>
 
 # QuickStart 
 Download chengyu Anki decks from AnkiWeb
-[chengyu Anki decks](https://ankiweb.net/shared/info/1956974465)
+[chengyu Anki decks](https://ankiweb.net/shared/info/492193331)
 
 # Features in the Anki deck
 - Gamification, select chengyu characters in order 
